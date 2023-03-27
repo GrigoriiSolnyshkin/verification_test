@@ -1,9 +1,57 @@
 class SymbolicExecutionTree (
-    val path : List<Expr>,
-    val state : Map<String, Expr>,
+    val path : List<PrimitiveExpr>,
+    val state : Map<String, PrimitiveExpr>,
     val node : Expr? = null,
     val children : List<SymbolicExecutionTree> = emptyList()
-    )
+    ) {
+    fun prettyPrint() : String {
+        return print(0).toString()
+    }
+
+    private fun printMetaInfo(padding: Int) : StringBuilder{
+        val strbld = StringBuilder()
+        strbld.appendLine("path:".addIndent(padding))
+        path.forEach{
+            strbld.appendLine(it.prettyPrint().addIndent(padding + 2))
+        }
+        strbld.appendLine("state:".addIndent(padding))
+        state.forEach {
+                (k, v) -> strbld.appendLine("$k = ${v.prettyPrint()}".addIndent(padding + 2))
+        }
+        return strbld
+    }
+    private fun print(padding: Int) : StringBuilder {
+        when (node) {
+            null -> {
+                val strbld = StringBuilder()
+                strbld.appendLine("node: final")
+                strbld.append(printMetaInfo(padding))
+                return strbld
+            }
+            is If -> {
+                val strbld = StringBuilder()
+                strbld.appendLine("node: if (${node.cond.prettyPrint()})")
+                strbld.append(printMetaInfo(padding))
+                strbld.append("-true-->".addIndent(padding))
+                strbld.append(children[0].print(padding + 8))
+                strbld.append("-false->".addIndent(padding))
+                strbld.append(children[1].print(padding + 8))
+                return strbld
+            }
+            is Let -> {
+                val strbld = StringBuilder()
+                strbld.appendLine("node: ${node.variable.name} = ${node.newValue.prettyPrint()}")
+                strbld.append(printMetaInfo(padding))
+                strbld.append("------->".addIndent(padding))
+                strbld.append(children[0].print(padding + 8))
+                return strbld
+            }
+            else -> {
+                throw Exception("invalid node")
+            }
+        }
+    }
+}
 
 fun NextNodeTree.buildSymbolicExecutionTree () : SymbolicExecutionTree {
     val initialState = freeVariables.associateWith { s -> Symbol(s + "_symbol") }
@@ -11,8 +59,8 @@ fun NextNodeTree.buildSymbolicExecutionTree () : SymbolicExecutionTree {
 }
 
 private fun NextNodeTree.buildSymbolic(
-    currentPath: List<Expr>,
-    currentState : Map<String, Expr>,
+    currentPath: List<PrimitiveExpr>,
+    currentState : Map<String, PrimitiveExpr>,
     expr: Expr?
 ) : SymbolicExecutionTree {
     when (expr) {
@@ -38,4 +86,9 @@ private fun NextNodeTree.buildSymbolic(
             throw Exception("node is invalid")
         }
     }
+}
+
+
+fun String.addIndent(pad : Int) : String {
+    return "".padStart(pad) + this
 }

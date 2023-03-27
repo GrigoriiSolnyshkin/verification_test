@@ -1,7 +1,19 @@
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val tree = buildNextNodeTree(
+        Block(
+            Let(Var("x"), Const(1)),
+            Let(Var("y"), Const(0)),
+            If( NEq(Var("a"), Const(0)),
+                Block(
+                    Let(Var("y"), Plus(Const(3), Var("x"))),
+                    If( Eq(Var("b"), Const(0)),
+                        Let(Var("x"), Mul(Const(2), Plus(Var("a"), Var("b")))),
+                    )
+                )
+            ),
+            If(Minus(Var("x"), Var("y")), Block(), Block())
+        )
+    ).buildSymbolicExecutionTree()
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    println(tree.prettyPrint())
 }

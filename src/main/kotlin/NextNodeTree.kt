@@ -1,6 +1,7 @@
 
 /*
-saves info about what node is next in the order of execution:
+saves info about what node is next in the order of execution
+and therefore is very efficient for calculating other trees:
 firstNode: node to start with in the Tree
 nextNode: map of next nodes for assignments
 trueNode: map of next nodes for if branches
@@ -83,7 +84,7 @@ fun buildNextNodeTree (expr: Expr?) : NextNodeTree {
 
         else -> {
             val block = expr as Block
-            val builders = block.exprs.map{it -> NextNodeTree(it)}
+            val builders = block.exprs.map{buildNextNodeTree(it)}
             return builders.fold (NextNodeTree()) { acc, it -> sequence(acc, it) }
         }
     }
