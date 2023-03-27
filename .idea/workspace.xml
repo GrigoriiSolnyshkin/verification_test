@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdfecdd1-2015-4e07-952e-e69b502f33f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/expressions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/FreeVariablesTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/NextNodeTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fdfecdd1-2015-4e07-952e-e69b502f33f6" name="Changes" comment="second commit:&#10;prettyPrint, bugs, tests">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/NextNodeTree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/NextNodeTree.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SymbolicExecutionTree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SymbolicExecutionTree.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/hierarchy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/abstract.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +140,14 @@
       <option name="presentableId" value="Default" />
       <updated>1679929621957</updated>
     </task>
+    <task id="LOCAL-00001" summary="second commit:&#10;prettyPrint, bugs, tests">
+      <created>1679943191592</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679943191593</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,5 +160,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="second commit:&#10;prettyPrint, bugs, tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit:&#10;prettyPrint, bugs, tests" />
   </component>
 </project>
